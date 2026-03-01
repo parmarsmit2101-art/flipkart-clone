@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Electronics Store</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        .product {
+            background: white;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+        .btn {
+            padding: 8px 15px;
+            background: blue;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Electronics Products</h1>
+
+    <a href="{% url 'add_product' %}" class="btn">Add Product</a>
+
+    {% for product in products %}
+    <div class="product">
+        <h2>{{ product.name }}</h2>
+        <p><strong>Brand:</strong> {{ product.brand }}</p>
+        <p><strong>Price:</strong> ₹{{ product.price }}</p>
+        <p>{{ product.description }}</p>
+    </div>
+    {% empty %}
+    <p>No products available.</p>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
